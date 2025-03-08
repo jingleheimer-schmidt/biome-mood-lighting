@@ -88,12 +88,8 @@ end
 ---@param entity LuaEntity
 ---@return Color
 local function get_biome_color(entity)
-    local tiles = entity.surface.find_tiles_filtered { position = entity.position, radius = 1 }
-    local ores = entity.surface.find_entities_filtered { position = entity.position, radius = 2, type = "resource" }
-    local tile_count = 0
-    local ore_count = 0
+    local tiles = entity.surface.find_tiles_filtered { position = entity.position, radius = 3 }
     local tile_color = { r = 0, g = 0, b = 0 }
-    local ore_color = { r = 0, g = 0, b = 0 }
     for _, tile in pairs(tiles) do
         if tile.valid then
             local map_color = { r = 0, g = 0, b = 0 }
@@ -137,33 +133,11 @@ local function get_biome_color(entity)
             }
         end
     end
-    for _, ore in pairs(ores) do
-        if ore.valid then
-            local ore_prototype = ore.prototype
-            if ore_prototype then
-                local map_color = ore_prototype.map_color or { r = 0, g = 0, b = 0 }
-                ore_color.r = ore_color.r + map_color.r
-                ore_color.g = ore_color.g + map_color.g
-                ore_color.b = ore_color.b + map_color.b
-                ore_count = ore_count + 1
-            end
-        end
-    end
-    if ore_count > 0 then
-        ore_color.r = ore_color.r / ore_count
-        ore_color.g = ore_color.g / ore_count
-        ore_color.b = ore_color.b / ore_count
-    end
     if tile_count > 0 then
         tile_color.r = tile_color.r / tile_count
         tile_color.g = tile_color.g / tile_count
         tile_color.b = tile_color.b / tile_count
     end
-    local final_color = { r = 0, g = 0, b = 0 }
-    local ore_ratio = ore_count / tile_count
-    final_color.r = (tile_color.r * (1 - ore_ratio)) + (ore_color.r * ore_ratio)
-    final_color.g = (tile_color.g * (1 - ore_ratio)) + (ore_color.g * ore_ratio)
-    final_color.b = (tile_color.b * (1 - ore_ratio)) + (ore_color.b * ore_ratio)
 
     final_color = normalize_color(tile_color)
     return final_color
