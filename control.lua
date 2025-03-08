@@ -85,60 +85,35 @@ local function normalize_color(color)
     return { r = new_r, g = new_g, b = new_b }
 end
 
+---@param tiles LuaTile[]
+---@return LuaTilePrototype
+local function get_dominant_tile(tiles)
+    local tile_counts = {}
+    for _, tile in pairs(tiles) do
+        if tile.valid then
+            local tile_name = tile.double_hidden_tile or tile.hidden_tile or tile.name
+            tile_counts[tile_name] = tile_counts[tile_name] or 0
+            tile_counts[tile_name] = tile_counts[tile_name] + 1
+        end
+    end
+    local dominant_tile_name, max_count = nil, 0
+    for tile_name, count in pairs(tile_counts) do
+        if count > max_count then
+            dominant_tile_name = tile_name
+            max_count = count
+        end
+    end
+    return prototypes["tile"][dominant_tile_name]
+end
+
 ---@param entity LuaEntity
 ---@return Color
 local function get_biome_color(entity)
-    local tiles = entity.surface.find_tiles_filtered { position = entity.position, radius = 3 }
-    local tile_color = { r = 0, g = 0, b = 0 }
-    for _, tile in pairs(tiles) do
-        if tile.valid then
-            local map_color = { r = 0, g = 0, b = 0 }
-            local hidden_tile = tile.hidden_tile
-            local double_hidden_tile = tile.double_hidden_tile
-            if double_hidden_tile then
-                local prototype = prototypes["tile"][double_hidden_tile]
-                if prototype then
-                    map_color = prototype.map_color
-                    tile_color.r = tile_color.r + map_color.r
-                    tile_color.g = tile_color.g + map_color.g
-                    tile_color.b = tile_color.b + map_color.b
-                    tile_count = tile_count + 1
-                end
-            elseif hidden_tile then
-                prototype = prototypes["tile"][hidden_tile]
-                if prototype then
-                    map_color = prototype.map_color
-                    tile_color.r = tile_color.r + map_color.r
-                    tile_color.g = tile_color.g + map_color.g
-                    tile_color.b = tile_color.b + map_color.b
-                    tile_count = tile_count + 1
-                end
-            else
-                map_color = tile.prototype.map_color
-                tile_color.r = tile_color.r + map_color.r
-                tile_color.g = tile_color.g + map_color.g
-                tile_color.b = tile_color.b + map_color.b
-                tile_count = tile_count + 1
-            end
-            rendering.draw_circle {
-                color = map_color,
-                surface = tile.surface,
-                target = { tile.position.x + 0.5, tile.position.y + 0.5 },
-                radius = 0.5,
-                filled = true,
-                draw_on_ground = true,
-                only_in_alt_mode = false,
-                only_in_controller_mode = false,
-                time_to_live = 60 * 5
-            }
-        end
-    end
-    if tile_count > 0 then
-        tile_color.r = tile_color.r / tile_count
-        tile_color.g = tile_color.g / tile_count
-        tile_color.b = tile_color.b / tile_count
-    end
-
+    local tiles = entity.surface.find_tiles_filtered { position = entity.position, radius = 2 }
+    local dominant_tile = get_dominant_tile(tiles)
+    if not dominant_tile then dominant_tile = entity.surface.get_tile(entity.position.x, entity.position.y).prototype end
+    local map_color = dominant_tile.map_color
+    local tile_color = { r = map_color.r, g = map_color.g, b = map_color.b }
     final_color = normalize_color(tile_color)
     return final_color
 end
