@@ -16,6 +16,7 @@ entity.created_effect = {
 local item = table.deepcopy(data.raw["item"]["constant-combinator"])
 item.name = "biome-color-combinator"
 item.place_result = "biome-color-combinator"
+item.order = item.order .. "-[biome-color-combinator]"
 
 local recipe = table.deepcopy(data.raw["recipe"]["constant-combinator"])
 recipe.name = "biome-color-combinator"
