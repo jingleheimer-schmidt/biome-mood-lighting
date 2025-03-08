@@ -81,7 +81,7 @@ end
 local function normalize_color(color)
     local r, g, b = color.r, color.g, color.b
     local h, s, l = rgb_to_hsl(r, g, b)
-    local new_r, new_g, new_b = hsl_to_rgb(h, 1, l)
+    local new_r, new_g, new_b = hsl_to_rgb(h, .6, .5)
     return { r = new_r, g = new_g, b = new_b }
 end
 
