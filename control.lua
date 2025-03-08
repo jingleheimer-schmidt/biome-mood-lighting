@@ -96,18 +96,19 @@ local function get_biome_color(entity)
     local ore_color = { r = 0, g = 0, b = 0 }
     for _, tile in pairs(tiles) do
         if tile.valid then
+            local map_color = { r = 0, g = 0, b = 0 }
             local hidden_tile = tile.hidden_tile
             if hidden_tile then
                 prototype = prototypes["tile"][hidden_tile]
                 if prototype then
-                    local map_color = prototype.map_color or { r = 0, g = 0, b = 0 }
+                    map_color = prototype.map_color
                     tile_color.r = tile_color.r + map_color.r
                     tile_color.g = tile_color.g + map_color.g
                     tile_color.b = tile_color.b + map_color.b
                     tile_count = tile_count + 1
                 end
             else
-                local map_color = tile.prototype.map_color or { r = 0, g = 0, b = 0 }
+                map_color = tile.prototype.map_color
                 tile_color.r = tile_color.r + map_color.r
                 tile_color.g = tile_color.g + map_color.g
                 tile_color.b = tile_color.b + map_color.b
@@ -154,7 +155,7 @@ local function get_biome_color(entity)
     final_color.g = (tile_color.g * (1 - ore_ratio)) + (ore_color.g * ore_ratio)
     final_color.b = (tile_color.b * (1 - ore_ratio)) + (ore_color.b * ore_ratio)
 
-    final_color = normalize_color(final_color)
+    final_color = normalize_color(tile_color)
     return final_color
 end
 
