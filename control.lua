@@ -85,11 +85,8 @@ local function get_biome_color(entity)
     return final_color
 end
 
----@param event EventData.on_script_trigger_effect
-local function on_script_trigger_event(event)
-    if event.effect_id ~= "biome-color-combinator" then return end
-    local combinator = event.source_entity
-    if not (combinator and combinator.valid) then return end
+---@param combinator LuaEntity
+local function set_biome_combinator_color_signals(combinator)
     local control_behavior = combinator.get_or_create_control_behavior() --[[@as LuaConstantCombinatorControlBehavior]]
     if not control_behavior then return end
     local biome_color_section = control_behavior.get_section(1)
@@ -108,4 +105,22 @@ local function on_script_trigger_event(event)
     set_slot(3, "signal-blue", biome_color.b)
 end
 
+---@param event EventData.on_script_trigger_effect
+local function on_script_trigger_event(event)
+    if event.effect_id ~= "biome-color-combinator" then return end
+    local combinator = event.source_entity
+    if not (combinator and combinator.valid) then return end
+    set_biome_combinator_color_signals(combinator)
+end
+
+---@param event EventData.on_gui_opened
+local function on_gui_opened(event)
+    if event.gui_type ~= defines.gui_type.entity then return end
+    local entity = event.entity
+    if not (entity and entity.valid) then return end
+    if entity.name ~= "biome-color-combinator" then return end
+    set_biome_combinator_color_signals(entity)
+end
+
 script.on_event(defines.events.on_script_trigger_effect, on_script_trigger_event)
+script.on_event(defines.events.on_gui_opened, on_gui_opened)
