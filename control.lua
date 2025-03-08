@@ -107,10 +107,17 @@ end
 
 ---@param event EventData.on_script_trigger_effect
 local function on_script_trigger_event(event)
-    if event.effect_id ~= "biome-color-combinator" then return end
-    local combinator = event.source_entity
-    if not (combinator and combinator.valid) then return end
-    set_biome_combinator_color_signals(combinator)
+    local effect_id = event.effect_id
+    if effect_id == "biome-color-combinator" then
+        local combinator = event.source_entity
+        if not (combinator and combinator.valid) then return end
+        set_biome_combinator_color_signals(combinator)
+    elseif effect_id == "biome-color-lamp" then
+        local lamp = event.source_entity
+        if not (lamp and lamp.valid) then return end
+        local color = get_biome_color(lamp)
+        lamp.color = color
+    end
 end
 
 ---@param event EventData.on_gui_opened
@@ -118,8 +125,13 @@ local function on_gui_opened(event)
     if event.gui_type ~= defines.gui_type.entity then return end
     local entity = event.entity
     if not (entity and entity.valid) then return end
-    if entity.name ~= "biome-color-combinator" then return end
-    set_biome_combinator_color_signals(entity)
+    local entity_name = entity.name
+    if entity.name == "biome-color-combinator" then
+        set_biome_combinator_color_signals(entity)
+    elseif entity_name == "biome-color-lamp" then
+        local color = get_biome_color(entity)
+        entity.color = color
+    end
 end
 
 script.on_event(defines.events.on_script_trigger_effect, on_script_trigger_event)
