@@ -20,9 +20,7 @@ item.order = item.order .. "-[biome-color-combinator]"
 
 local recipe = table.deepcopy(data.raw["recipe"]["constant-combinator"])
 recipe.name = "biome-color-combinator"
-recipe.results = {
-    { type = "item", name = "biome-color-combinator", amount = 1 }
-}
+recipe.results = { { type = "item", name = "biome-color-combinator", amount = 1 } }
 
 data:extend { entity, item, recipe }
 
