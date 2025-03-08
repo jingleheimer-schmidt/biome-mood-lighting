@@ -120,8 +120,7 @@ end
 
 ---@param event EventData.on_script_trigger_effect
 local function on_script_trigger_event(event)
-    local effect_id = event.effect_id
-    if not effect_id == "biome-color-combinator" then return end
+    if event.effect_id ~= "biome-color-combinator" then return end
     local combinator = event.source_entity
     if not (combinator and combinator.valid) then return end
     local control_behavior = combinator.get_or_create_control_behavior() --[[@as LuaConstantCombinatorControlBehavior]]
