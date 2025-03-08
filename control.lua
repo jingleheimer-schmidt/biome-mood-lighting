@@ -98,7 +98,17 @@ local function get_biome_color(entity)
         if tile.valid then
             local map_color = { r = 0, g = 0, b = 0 }
             local hidden_tile = tile.hidden_tile
-            if hidden_tile then
+            local double_hidden_tile = tile.double_hidden_tile
+            if double_hidden_tile then
+                local prototype = prototypes["tile"][double_hidden_tile]
+                if prototype then
+                    map_color = prototype.map_color
+                    tile_color.r = tile_color.r + map_color.r
+                    tile_color.g = tile_color.g + map_color.g
+                    tile_color.b = tile_color.b + map_color.b
+                    tile_count = tile_count + 1
+                end
+            elseif hidden_tile then
                 prototype = prototypes["tile"][hidden_tile]
                 if prototype then
                     map_color = prototype.map_color
