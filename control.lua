@@ -138,7 +138,6 @@ local function get_biome_color(entity)
         tile_color.b = tile_color.b / tile_count
     end
     local final_color = { r = 0, g = 0, b = 0 }
-    local total_count = ore_count + tile_count
     local ore_ratio = ore_count / tile_count
     final_color.r = (tile_color.r * (1 - ore_ratio)) + (ore_color.r * ore_ratio)
     final_color.g = (tile_color.g * (1 - ore_ratio)) + (ore_color.g * ore_ratio)
