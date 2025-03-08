@@ -6,7 +6,7 @@
     "author": "asher_sky",
     "contact": "",
     "homepage": "",
-    "description": "Adds a combinator that outputs the color of the biome it is placed in.",
+    "description": "Adds a combinator that outputs the color of the biome where it is built",
     "factorio_version": "2.0",
     "dependencies": [
         "base >= 2.0"
