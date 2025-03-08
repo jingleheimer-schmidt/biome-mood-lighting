@@ -1,88 +1,55 @@
 
---[[
- * Converts an RGB color value to HSL. Conversion formula
- * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
- * Assumes r, g, and b are contained in the set [0, 255] and
- * returns h, s, and l in the set [0, 1].
-]]
----@param r number [0, 255]
----@param g number [0, 255]
----@param b number [0, 255]
----@param a number? [0, 255]
----@return float, float, float, float
-function rgb_to_hsl(r, g, b, a)
-    r, g, b = r / 255, g / 255, b / 255
-
-    local max, min = math.max(r, g, b), math.min(r, g, b)
-    local h, s, l
-
-    l = (max + min) / 2
-
-    if max == min then
-        h, s = 0, 0 -- achromatic
-    else
-        local d = max - min
-        if l > 0.5 then s = d / (2 - max - min) else s = d / (max + min) end
-        if max == r then
-            h = (g - b) / d
-            if g < b then h = h + 6 end
-        elseif max == g then
-            h = (b - r) / d + 2
-        elseif max == b then
-            h = (r - g) / d + 4
-        end
-        h = h / 6
+---@param h number [0-1]
+---@param s number [0-1]
+---@param l number [0-1]
+---@return number [0-1]
+---@return number [0-1]
+---@return number [0-1]
+local function hsl_to_rgb(h, s, l)
+    if s == 0 then return l, l, l end
+    local function to(p, q, t)
+        if t < 0 then t = t + 1 end
+        if t > 1 then t = t - 1 end
+        if t < 1 / 6 then return p + (q - p) * 6 * t end
+        if t < 0.5 then return q end
+        if t < 2 / 3 then return p + (q - p) * (2 / 3 - t) * 6 end
+        return p
     end
-
-    return h, s, l, a or 255
+    local q = l < 0.5 and l * (1 + s) or l + s - l * s
+    local p = 2 * l - q
+    return to(p, q, h + 1 / 3), to(p, q, h), to(p, q, h - 1 / 3)
 end
 
---[[
-   * Converts an HSL color value to RGB. Conversion formula
-   * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
-   * Assumes h, s, and l are contained in the set [0, 1] and
-   * returns r, g, and b in the set [0, 255].
-]]
----@param h float [0, 1]
----@param s float [0, 1]
----@param l float [0, 1]
----@param a float? [0, 1]
----@return integer, integer, integer, integer
-function hsl_to_rgb(h, s, l, a)
-    local r, g, b
-
-    if s == 0 then
-        r, g, b = l, l, l -- achromatic
+---@param r number [0-1]
+---@param g number [0-1]
+---@param b number [0-1]
+---@return number [0-1]
+---@return number [0-1]
+---@return number [0-1]
+local function rgb_to_hsl(r, g, b)
+    local max, min = math.max(r, g, b), math.min(r, g, b)
+    local l = (max + min) / 2
+    if max == min then return 0, 0, l end
+    local d = max - min
+    local s = l > 0.5 and d / (2 - max - min) or d / (max + min)
+    local h
+    if max == r then
+        h = (g - min) / d + (g < min and 6 or 0)
+    elseif max == g then
+        h = (b - r) / d + 2
     else
-        function hue2rgb(p, q, t)
-            if t < 0 then t = t + 1 end
-            if t > 1 then t = t - 1 end
-            if t < 1 / 6 then return p + (q - p) * 6 * t end
-            if t < 1 / 2 then return q end
-            if t < 2 / 3 then return p + (q - p) * (2 / 3 - t) * 6 end
-            return p
-        end
-
-        local q
-        if l < 0.5 then q = l * (1 + s) else q = l + s - l * s end
-        local p = 2 * l - q
-
-        r = hue2rgb(p, q, h + 1 / 3)
-        g = hue2rgb(p, q, h)
-        b = hue2rgb(p, q, h - 1 / 3)
-        a = a or 1
+        h = (r - g) / d + 4
     end
-
-    return r * 255, g * 255, b * 255, a * 255
+    return h / 6, s, l
 end
 
 ---@param color Color
 ---@return Color
 local function normalize_color(color)
-    local r, g, b = color.r, color.g, color.b
+    local r, g, b = color.r / 255, color.g / 255, color.b / 255
     local h, s, l = rgb_to_hsl(r, g, b)
     local new_r, new_g, new_b = hsl_to_rgb(h, .6, .5)
-    return { r = new_r, g = new_g, b = new_b }
+    return { r = new_r * 255, g = new_g * 255, b = new_b * 255 }
 end
 
 ---@param tiles LuaTile[]
