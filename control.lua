@@ -113,6 +113,17 @@ local function get_biome_color(entity)
                 tile_color.b = tile_color.b + map_color.b
                 tile_count = tile_count + 1
             end
+            rendering.draw_circle {
+                color = map_color,
+                surface = tile.surface,
+                target = { tile.position.x + 0.5, tile.position.y + 0.5 },
+                radius = 0.5,
+                filled = true,
+                draw_on_ground = true,
+                only_in_alt_mode = false,
+                only_in_controller_mode = false,
+                time_to_live = 60 * 5
+            }
         end
     end
     for _, ore in pairs(ores) do
