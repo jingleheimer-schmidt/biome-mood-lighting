@@ -128,24 +128,17 @@ local function on_script_trigger_event(event)
     local biome_color_section = control_behavior.get_section(1)
     if not biome_color_section then return end
     local biome_color = get_biome_color(combinator)
-    biome_color_section.set_slot(1, {
-        value = {
-            type = "virtual", name = "signal-red", comparator = "=", quality = "normal"
-        },
-        min = biome_color.r
-    })
-    biome_color_section.set_slot(2, {
-        value = {
-            type = "virtual", name = "signal-green", comparator = "=", quality = "normal"
-        },
-        min = biome_color.g
-    })
-    biome_color_section.set_slot(3, {
-        value = {
-            type = "virtual", name = "signal-blue", comparator = "=", quality = "normal"
-        },
-        min = biome_color.b
-    })
+    local function set_slot(index, signal_name, value)
+        biome_color_section.set_slot(index, {
+            value = {
+                type = "virtual", name = signal_name, comparator = "=", quality = "normal"
+            },
+            min = value
+        })
+    end
+    set_slot(1, "signal-red", biome_color.r)
+    set_slot(2, "signal-green", biome_color.g)
+    set_slot(3, "signal-blue", biome_color.b)
 end
 
 script.on_event(defines.events.on_script_trigger_effect, on_script_trigger_event)
