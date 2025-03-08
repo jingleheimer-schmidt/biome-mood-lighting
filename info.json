@@ -1,0 +1,14 @@
+
+{
+    "name": "biome-color-combinator",
+    "version": "0.1.0",
+    "title": "Biome Color Combinator",
+    "author": "asher_sky",
+    "contact": "",
+    "homepage": "",
+    "description": "Adds a combinator that outputs the color of the biome it is placed in.",
+    "factorio_version": "2.0",
+    "dependencies": [
+        "base >= 2.0"
+    ]
+}
