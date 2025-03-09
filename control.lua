@@ -43,12 +43,22 @@ local function rgb_to_hsl(r, g, b)
     return h / 6, s, l
 end
 
+---@param value number
+---@param min number
+---@param max number
+---@return number
+local function clamp(value, min, max)
+    return math.max(math.min(value, max), min)
+end
+
 ---@param color Color
 ---@return Color
 local function normalize_color(color)
     local r, g, b = color.r / 255, color.g / 255, color.b / 255
     local h, s, l = rgb_to_hsl(r, g, b)
-    local new_r, new_g, new_b = hsl_to_rgb(h, .6, .5)
+    s = clamp(s * 1.75, 0.25, 0.75)
+    l = clamp(l * 1.75, 0.25, 0.75)
+    local new_r, new_g, new_b = hsl_to_rgb(h, s, l)
     return { r = new_r * 255, g = new_g * 255, b = new_b * 255 }
 end
 
