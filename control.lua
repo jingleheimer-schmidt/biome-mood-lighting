@@ -56,10 +56,13 @@ end
 local function normalize_color(color)
     local r, g, b = color.r / 255, color.g / 255, color.b / 255
     local h, s, l = rgb_to_hsl(r, g, b)
-    s = clamp(s * 1.75, 0.25, 0.50)
-    l = clamp(l * 1.75, 0.50, 0.75)
-    local new_r, new_g, new_b = hsl_to_rgb(h, s, l)
-    return { r = new_r * 255, g = new_g * 255, b = new_b * 255 }
+    local l_min, l_max, l_target = 0.33, 0.66, 0.5
+    local s_min, s_max, s_target = 0.25, 0.75, 0.5
+    local blend_factor = 0.4 -- how much to blend towards the target values
+    l = clamp(l + (l_target - l) * blend_factor, l_min, l_max)
+    s = clamp(s + (s_target - s) * blend_factor, s_min, s_max)
+    local final_r, final_g, final_b = hsl_to_rgb(h, s, l)
+    return { r = final_r * 255, g = final_g * 255, b = final_b * 255 }
 end
 
 ---@param tiles LuaTile[]
