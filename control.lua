@@ -73,11 +73,10 @@ local function get_dominant_tile(tiles)
             tile_counts[tile_name] = tile_counts[tile_name] + 1
         end
     end
-    local dominant_tile_name, max_count = nil, 0
+    local dominant_tile_name, max_count = "", 0
     for tile_name, count in pairs(tile_counts) do
         if count > max_count then
-            dominant_tile_name = tile_name
-            max_count = count
+            dominant_tile_name, max_count = tile_name, count
         end
     end
     return prototypes["tile"][dominant_tile_name]
