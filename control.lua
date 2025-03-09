@@ -34,7 +34,7 @@ local function rgb_to_hsl(r, g, b)
     local s = l > 0.5 and d / (2 - max - min) or d / (max + min)
     local h
     if max == r then
-        h = (g - min) / d + (g < min and 6 or 0)
+        h = (g - b) / d + (g < b and 6 or 0)
     elseif max == g then
         h = (b - r) / d + 2
     else
