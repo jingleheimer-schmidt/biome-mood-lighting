@@ -56,8 +56,8 @@ end
 local function normalize_color(color)
     local r, g, b = color.r / 255, color.g / 255, color.b / 255
     local h, s, l = rgb_to_hsl(r, g, b)
-    s = clamp(s * 1.75, 0.25, 0.75)
-    l = clamp(l * 1.75, 0.25, 0.75)
+    s = clamp(s * 1.75, 0.25, 0.50)
+    l = clamp(l * 1.75, 0.50, 0.75)
     local new_r, new_g, new_b = hsl_to_rgb(h, s, l)
     return { r = new_r * 255, g = new_g * 255, b = new_b * 255 }
 end
