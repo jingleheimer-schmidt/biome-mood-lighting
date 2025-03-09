@@ -1,12 +1,12 @@
 
 {
-    "name": "biome-color-combinator",
+    "name": "biome-mood-lighting",
     "version": "0.1.0",
-    "title": "Biome Color Combinator",
+    "title": "Biome Mood Lighting",
     "author": "asher_sky",
     "contact": "",
     "homepage": "",
-    "description": "Adds a combinator that outputs the color of the biome where it is built",
+    "description": "Adds a lamp that glows with the color of the biome where it is built, and a combinator that outputs the color in component RGB signals",
     "factorio_version": "2.0",
     "dependencies": [
         "base >= 2.0"
