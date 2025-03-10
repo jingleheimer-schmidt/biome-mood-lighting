@@ -24,7 +24,7 @@ This mod is generally compatible with all other mods, unless they remove or sign
 
 # Translation
 
-Help translate Color Coded Pipes to more languages: https://crowdin.com/project/factorio-mods-localization
+Help translate Biome Mood Lighting to more languages: https://crowdin.com/project/factorio-mods-localization
 Currently available locale:
 🇺🇸 English (en)
 
@@ -39,6 +39,6 @@ Special thanks to justarandomgeek for the [Factorio Modding Toolkit](https://git
 
 # License
 
-Biome Color Combinator © 2025 by asher_sky is licensed under Attribution-NonCommercial-ShareAlike 4.0 International.
+Biome Mood Lighting © 2025 by asher_sky is licensed under Attribution-NonCommercial-ShareAlike 4.0 International.
 To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/
 or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
