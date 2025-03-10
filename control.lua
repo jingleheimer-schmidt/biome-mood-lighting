@@ -140,7 +140,7 @@ local function on_gui_opened(event)
     local entity = event.entity
     if not (entity and entity.valid) then return end
     local entity_name = entity.name
-    if entity.name == "biome-color-combinator" then
+    if entity_name == "biome-color-combinator" then
         set_biome_combinator_color_signals(entity)
     elseif entity_name == "biome-color-lamp" then
         local color = get_biome_color(entity)
