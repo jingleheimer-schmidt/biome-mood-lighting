@@ -1,9 +1,10 @@
 # Overview
 
-* Adds a combinator that outputs the color of the biome where it is built
-* Color is provided as component Red, Green, and Blue signals
-* Signal values are updated when the combinator is built, and every time the GUI is opened
-* Biome color is based on the map color of the dominant tile in a small radius around the combinator
+* Adds a lamp that is colored based on the biome where it is built
+* Adds a constant combinator that outputs the color of the biome where it is built
+* Combinator color is provided as component Red, Green, and Blue signals
+* Lamp color and combinator signal values are updated when the entity is built, and every time the GUI is opened
+* Biome color is based on the map color of the dominant tile in a small radius around the entity
 
 ***
 
@@ -17,7 +18,7 @@
 
 # Compatibility
 
-This mod is generally compatible with all other mods, unless they remove or significantly change the constant combinator.
+This mod is generally compatible with all other mods, unless they remove or significantly change the base lamp or constant combinator.
 
 ***
 
