@@ -93,7 +93,7 @@ local function get_biome_color(entity)
     if not dominant_tile then dominant_tile = entity.surface.get_tile(entity.position.x, entity.position.y).prototype end
     local map_color = dominant_tile.map_color
     local tile_color = { r = map_color.r, g = map_color.g, b = map_color.b }
-    final_color = normalize_color(tile_color)
+    local final_color = normalize_color(tile_color)
     return final_color
 end
 
