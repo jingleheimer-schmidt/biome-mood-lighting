@@ -1,3 +1,5 @@
+![Factorio Mod Portal mod version](https://img.shields.io/factorio-mod-portal/v/biome-mood-lighting) ![Factorio Mod Portal last updated](https://img.shields.io/factorio-mod-portal/last-updated/biome-mood-lighting) ![Factorio Mod Portal downloads](https://img.shields.io/factorio-mod-portal/dt/biome-mood-lighting)
+
 # Overview
 
 * Adds a lamp that is colored based on the biome where it is built
