@@ -12,9 +12,9 @@
 
 # Companion Mods
 
-[Colored Lamp Normalizer](https://mods.factorio.com/mod/circuit-color-lamp-light-parity) - Modifies circuit-controlled colored lamps to shine with the same radius and intensity as manually-colored ones
-[Subtle Lighting](https://mods.factorio.com/mod/dim_lamps) - Modifies the intensity of lamps, creating a more gradual falloff to the darkness beyond
-[Glowing Trees](https://mods.factorio.com/mod/glowing_trees) - Adds a glowing aura to the trees, and bioluminescence for foliage and decoratives
+* [Colored Lamp Normalizer](https://mods.factorio.com/mod/circuit-color-lamp-light-parity) - Modifies circuit-controlled colored lamps to shine with the same radius and intensity as manually-colored ones
+* [Subtle Lighting](https://mods.factorio.com/mod/dim_lamps) - Modifies the intensity of lamps, creating a more gradual falloff to the darkness beyond
+* [Glowing Trees](https://mods.factorio.com/mod/glowing_trees) - Adds a glowing aura to the trees, and bioluminescence for foliage and decoratives
 
 ***
 
