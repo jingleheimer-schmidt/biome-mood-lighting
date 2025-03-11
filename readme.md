@@ -1,4 +1,4 @@
-![Factorio Mod Portal mod version](https://img.shields.io/factorio-mod-portal/v/biome-mood-lighting) ![Factorio Mod Portal last updated](https://img.shields.io/factorio-mod-portal/last-updated/biome-mood-lighting) ![Factorio Mod Portal downloads](https://img.shields.io/factorio-mod-portal/dt/biome-mood-lighting) ![Static Badge](https://img.shields.io/badge/Contribute?logo=github&link=https%3A%2F%2Fgithub.com%2Fjingleheimer-schmidt%2Fbiome-mood-lighting%2F) [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T217VYH5) 
+[![Ko-fi Donate](https://img.shields.io/badge/Ko--Fi-Donate%20-orange?logo=kofi&logoColor=white)](https://ko-fi.com/asher_sky) [![Crowdin Translate](https://img.shields.io/badge/Crowdin-Translate-green?logo=crowdin)](https://crowdin.com/project/factorio-mods-localization) [![GitHub Contribute](https://img.shields.io/badge/GitHub-Contribute-blue?logo=github)](https://github.com/jingleheimer-schmidt/biome-mood-lighting)
 
 # Overview
 
