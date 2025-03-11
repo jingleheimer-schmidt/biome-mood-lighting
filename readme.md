@@ -1,4 +1,4 @@
-[![Ko-fi Donate](https://img.shields.io/badge/Ko--Fi-Donate%20-orange?logo=kofi&logoColor=white)](https://ko-fi.com/asher_sky) [![Crowdin Translate](https://img.shields.io/badge/Crowdin-Translate-green?logo=crowdin)](https://crowdin.com/project/factorio-mods-localization) [![GitHub Contribute](https://img.shields.io/badge/GitHub-Contribute-blue?logo=github)](https://github.com/jingleheimer-schmidt/biome-mood-lighting)
+[![Ko-fi Donate](https://img.shields.io/badge/Ko--fi-Donate%20-orange?logo=kofi&logoColor=white)](https://ko-fi.com/asher_sky) [![Crowdin Translate](https://img.shields.io/badge/Crowdin-Translate-green?logo=crowdin)](https://crowdin.com/project/factorio-mods-localization) [![GitHub Contribute](https://img.shields.io/badge/GitHub-Contribute-blue?logo=github)](https://github.com/jingleheimer-schmidt/biome-mood-lighting)
 
 # Overview
 
