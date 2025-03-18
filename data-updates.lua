@@ -13,16 +13,16 @@ biome_combinator_entity.created_effect = {
     }
 }
 
-local ciome_combinator_item = table.deepcopy(data.raw["item"]["constant-combinator"])
-ciome_combinator_item.name = "biome-color-combinator"
-ciome_combinator_item.place_result = "biome-color-combinator"
-ciome_combinator_item.order = ciome_combinator_item.order .. "-[biome-color-combinator]"
+local biome_combinator_item = table.deepcopy(data.raw["item"]["constant-combinator"])
+biome_combinator_item.name = "biome-color-combinator"
+biome_combinator_item.place_result = "biome-color-combinator"
+biome_combinator_item.order = biome_combinator_item.order .. "-[biome-color-combinator]"
 
 local biome_combinator_recipe = table.deepcopy(data.raw["recipe"]["constant-combinator"])
 biome_combinator_recipe.name = "biome-color-combinator"
 biome_combinator_recipe.results = { { type = "item", name = "biome-color-combinator", amount = 1 } }
 
-data:extend { biome_combinator_entity, ciome_combinator_item, biome_combinator_recipe }
+data:extend { biome_combinator_entity, biome_combinator_item, biome_combinator_recipe }
 
 local biome_lamp_entity = table.deepcopy(data.raw["lamp"]["small-lamp"])
 biome_lamp_entity.name = "biome-color-lamp"
