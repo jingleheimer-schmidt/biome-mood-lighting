@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.1
-Date: ????
+Date: 2025-03-18
   Changes:
     - Moved entity, item, and recipe creation from data to data-updates to capture changes from other mods
 ---------------------------------------------------------------------------------------------------
