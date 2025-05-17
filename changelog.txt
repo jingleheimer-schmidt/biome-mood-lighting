@@ -5,6 +5,8 @@ Date: ????
     - Added option to apply biome mood light color to all lamps
     - Added option to hide the biome color lamp and combinator recipes
     - On mod initialization, lamps with the default color are updated to use biome colors when "Affect all lamps" is enabled
+  Locale:
+    - Added Russian (ru) locale from Crowdin
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.1
 Date: 2025-03-18
