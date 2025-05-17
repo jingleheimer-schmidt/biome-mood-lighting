@@ -145,6 +145,9 @@ local function on_gui_opened(event)
     elseif entity_name == "biome-color-lamp" then
         local color = get_biome_color(entity)
         entity.color = color
+    elseif (entity.type == "lamp") and settings.startup["biome-lighting-zombie-mode"].value == true then
+        local color = get_biome_color(entity)
+        entity.color = color
     end
 end
 
