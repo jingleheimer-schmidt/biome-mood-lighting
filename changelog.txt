@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.0
-Date: ????
+Date: 2025-05-17
   Features:
     - Added option to apply biome mood light color to all lamps
     - Added option to hide the biome color lamp and combinator recipes
