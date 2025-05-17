@@ -1,7 +1,7 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.2
 Date: ????
-  Changes:
+  Features:
     - Added option to apply biome mood light color to all lamps
     - Added option to hide the biome color lamp and combinator recipes
     - On mod initialization, lamps with the default color are updated to use biome colors when "Affect all lamps" is enabled
