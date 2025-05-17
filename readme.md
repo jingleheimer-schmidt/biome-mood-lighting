@@ -7,6 +7,8 @@
 * Combinator color is provided as component Red, Green, and Blue signals
 * Lamp color and combinator signal values are updated when the entity is built, and every time the GUI is opened
 * Biome color is based on the map color of the dominant tile in a small radius around the entity
+* Includes Universal Mode startup setting to apply the biome color effect to all lamps
+* Includes startup settings to hide the lamp and combinator recipes from the crafting menu
 
 ***
 
@@ -28,7 +30,7 @@ This mod is generally compatible with all other mods, unless they remove or sign
 
 Help translate Biome Mood Lighting to more languages: https://crowdin.com/project/factorio-mods-localization
 Currently available locale:
-🇺🇸 English (en)
+🇺🇸 English (en), 🇷🇺 Russian (ru)
 
 ***
 
