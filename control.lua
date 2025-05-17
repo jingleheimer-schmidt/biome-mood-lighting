@@ -153,3 +153,24 @@ end
 
 script.on_event(defines.events.on_script_trigger_effect, on_script_trigger_event)
 script.on_event(defines.events.on_gui_opened, on_gui_opened)
+
+local function color_existing_lamps()
+    if settings.startup["biome-lighting-zombie-mode"].value == false then return end
+    local default_color = { r = 1, g = 1, b = 0.75 }
+    for _, surface in pairs(game.surfaces) do
+        local lamps = surface.find_entities_filtered { type = "lamp" }
+        for _, lamp in pairs(lamps) do
+            local original_color = lamp.color
+            if original_color and
+                (original_color.r == default_color.r) and
+                (original_color.g == default_color.g) and
+                (original_color.b == default_color.b) then
+                local color = get_biome_color(lamp)
+                lamp.color = color
+            end
+        end
+    end
+end
+
+script.on_init(color_existing_lamps)
+script.on_configuration_changed(color_existing_lamps)
