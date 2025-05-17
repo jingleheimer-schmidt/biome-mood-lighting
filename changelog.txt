@@ -7,6 +7,7 @@ Date: ????
     - On mod initialization, lamps with the default color are updated to use biome colors when "Affect all lamps" is enabled
   Locale:
     - Added Russian (ru) locale from Crowdin
+    - Fixed typo in Biome color lamp entity description
 ---------------------------------------------------------------------------------------------------
 Version: 0.1.1
 Date: 2025-03-18
