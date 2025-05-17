@@ -21,6 +21,7 @@ biome_combinator_item.order = biome_combinator_item.order .. "-[biome-color-comb
 local biome_combinator_recipe = table.deepcopy(data.raw["recipe"]["constant-combinator"])
 biome_combinator_recipe.name = "biome-color-combinator"
 biome_combinator_recipe.results = { { type = "item", name = "biome-color-combinator", amount = 1 } }
+biome_combinator_recipe.hidden = settings.startup["biome-lighting-hide-combinator"].value == true
 
 data:extend { biome_combinator_entity, biome_combinator_item, biome_combinator_recipe }
 
@@ -46,6 +47,7 @@ biome_lamp_item.order = biome_lamp_item.order .. "-[biome-color-lamp]"
 local biome_lamp_recipe = table.deepcopy(data.raw["recipe"]["small-lamp"])
 biome_lamp_recipe.name = "biome-color-lamp"
 biome_lamp_recipe.results = { { type = "item", name = "biome-color-lamp", amount = 1 } }
+biome_lamp_recipe.hidden = settings.startup["biome-lighting-hide-lamp"].value == true
 
 data:extend { biome_lamp_entity, biome_lamp_item, biome_lamp_recipe }
 
