@@ -17,6 +17,27 @@ local biome_combinator_item = table.deepcopy(data.raw["item"]["constant-combinat
 biome_combinator_item.name = "biome-color-combinator"
 biome_combinator_item.place_result = "biome-color-combinator"
 biome_combinator_item.order = biome_combinator_item.order .. "-[biome-color-combinator]"
+local tile_editor_icon = data.raw["utility-sprites"]["default"]["tile_editor_icon"]
+local biome_combinator_icon_size = biome_combinator_item.icon_size or (biome_combinator_item.icons and biome_combinator_item.icons[1].icon_size) or 64
+---@type data.IconData
+local biome_combinator_overlay = {
+    icon = tile_editor_icon.filename,
+    icon_size = math.max(tile_editor_icon.width, tile_editor_icon.height),
+    scale = tile_editor_icon.scale / 6,
+    floating = true,
+    shift = {
+        x = -biome_combinator_icon_size / 6,
+        y = biome_combinator_icon_size / 6
+    }
+}
+if biome_combinator_item.icon then
+    biome_combinator_item.icons = {
+        { icon = biome_combinator_item.icon, icon_size = biome_combinator_icon_size }
+    }
+    table.insert(biome_combinator_item.icons, biome_combinator_overlay)
+else
+    table.insert(biome_combinator_item.icons, biome_combinator_overlay)
+end
 
 local biome_combinator_recipe = table.deepcopy(data.raw["recipe"]["constant-combinator"])
 biome_combinator_recipe.name = "biome-color-combinator"
