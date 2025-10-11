@@ -1,6 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.1
 Date: ????
+  Features:
+    - Added a tile overlay to the icons for biome color lamp and combinator
   Locale:
     - Updated Russian (ru) locale from Crowdin
     - Added Chinese (zh-CN) locale from Crowdin
@@ -10,7 +12,7 @@ Date: 2025-05-17
   Features:
     - Added option to apply biome mood light color to all lamps
     - Added option to hide the biome color lamp and combinator recipes
-    - On mod initialization, lamps with the default color are updated to use biome colors when "Affect all lamps" is enabled
+    - On mod initialization, lamps with the default color are updated to use biome colors when "Universal mode" is enabled
   Locale:
     - Added Russian (ru) locale from Crowdin
     - Fixed typo in Biome color lamp entity description
