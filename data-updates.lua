@@ -1,23 +1,20 @@
 
----@class OverlayOpts
----@field corner?        "bottom-left"|"bottom-right"|"top-left"|"top-right"  -- Which corner to place overlay (default: "bottom-left")
----@field inset_fraction? number  -- Fraction of the icon size to inset the overlay (default: 1/6)
----@field inset_px?       number  -- Explicit inset in pixels (overrides inset_fraction if set)
----@field scale_divisor?  number  -- Divisor for scaling the overlay sprite relative to its base scale (default: 4)
----@field sprite?         data.Sprite   -- A utility-sprite-like table with filename/width/height/scale
+---@alias Corner
+---| "bottom-left"
+---| "bottom-right"
+---| "top-left"
+---| "top-right"
 
---- Adds an overlay sprite to an item prototype (icons[]), defaulting to bottom-left.
+--- Adds an overlay sprite to an item prototype.
 --- Mutates and returns the item.
---- @param item table   -- Item prototype (e.g. data.raw.item["foo"])
---- @param opts OverlayOpts? -- Options to control placement and appearance
---- @return table       -- The modified item prototype
-local function add_overlay_to_item(item, opts)
-    opts = opts or {}
-
-    -- pick the overlay sprite (defaults to the tile editor icon)
-    local util = data.raw["utility-sprites"] and data.raw["utility-sprites"]["default"] or nil
-    local sprite = opts.sprite or (util and util.tile_editor_icon)
-    if not sprite then return item end
+---@param item data.ItemPrototype|data.EntityPrototype
+---@param sprite data.Sprite                # The sprite to use as overlay
+---@param corner? Corner                    # Which corner to place overlay (default: "bottom-left")
+---@param inset_fraction? number            # Fraction of icon size to inset (default: 1/6)
+---@param inset_px? number                  # Explicit inset in pixels (overrides inset_fraction)
+---@param scale_divisor? number             # Divisor for overlay sprite scale (default: 4)
+---@return data.ItemPrototype|data.EntityPrototype
+local function add_overlay_to_icon(item, sprite, corner, inset_fraction, inset_px, scale_divisor)
 
     -- base icon size
     local base_icon_size = item.icon_size
@@ -27,34 +24,34 @@ local function add_overlay_to_item(item, opts)
     base_icon_size = base_icon_size or 64
 
     -- corner selection
-    local corner = (opts.corner or "top-right")
+    local c = corner or "top-right"
     local corner_mul = {
         ["bottom-left"]  = { -1, 1 },
         ["bottom-right"] = { 1, 1 },
         ["top-left"]     = { -1, -1 },
         ["top-right"]    = { 1, -1 },
     }
-    local mul = corner_mul[corner] or corner_mul["bottom-left"]
+    local mul = corner_mul[c] or corner_mul["top-right"]
 
-    -- how far to shift
-    local inset_px = opts.inset_px
-    if not inset_px then
-        local inset_fraction = opts.inset_fraction or (1 / 6)
-        inset_px = base_icon_size * inset_fraction
+    -- inset
+    local px = inset_px
+    if not px then
+        local frac = inset_fraction or (1 / 8)
+        px = base_icon_size * frac
     end
 
     -- overlay scale
-    local scale_divisor = opts.scale_divisor or 4
-    local overlay_scale = (sprite.scale or 1) / scale_divisor
-
+    local divisor = scale_divisor or 5
+    local overlay_scale = (sprite.scale or 1) / divisor
     local overlay_icon_size = math.max(sprite.width or base_icon_size, sprite.height or base_icon_size)
 
+    -- overlay definition
     local overlay = {
         icon      = sprite.filename,
         icon_size = overlay_icon_size,
         scale     = overlay_scale,
         floating  = true,
-        shift     = { x = mul[1] * inset_px, y = mul[2] * inset_px },
+        shift     = { x = mul[1] * px, y = mul[2] * px },
     }
 
     -- convert single icon → icons[] if necessary
