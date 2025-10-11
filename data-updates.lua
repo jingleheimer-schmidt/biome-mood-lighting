@@ -119,7 +119,6 @@ biome_lamp_item.order = biome_lamp_item.order .. "-[biome-color-lamp]"
 add_overlay_to_icon(biome_lamp_entity, tile_editor_icon)
 add_overlay_to_icon(biome_lamp_item, tile_editor_icon)
 
-
 local biome_lamp_recipe = table.deepcopy(data.raw["recipe"]["small-lamp"])
 biome_lamp_recipe.name = "biome-color-lamp"
 biome_lamp_recipe.results = { { type = "item", name = "biome-color-lamp", amount = 1 } }
