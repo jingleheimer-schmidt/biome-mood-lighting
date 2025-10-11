@@ -43,7 +43,14 @@ local function add_overlay_to_icon(item, sprite, corner, inset_fraction, inset_p
     -- overlay scale
     local divisor = scale_divisor or 5
     local overlay_scale = (sprite.scale or 1) / divisor
-    local overlay_icon_size = math.max(sprite.width or base_icon_size, sprite.height or base_icon_size)
+    local overlay_icon_size
+    if sprite.width and sprite.height then
+        overlay_icon_size = math.max(sprite.width, sprite.height)
+    elseif sprite.size then
+        overlay_icon_size = sprite.size
+    else
+        overlay_icon_size = base_icon_size
+    end
 
     -- overlay definition
     local overlay = {
