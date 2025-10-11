@@ -65,6 +65,8 @@ local function add_overlay_to_icon(item, sprite, corner, inset_fraction, inset_p
 
     return item
 end
+local tile_editor_icon = table.deepcopy(data.raw["utility-sprites"]["default"]["tile_editor_icon"])
+local color_effect_icon = table.deepcopy(data.raw["utility-sprites"]["default"]["color_effect"])
 
 local biome_combinator_entity = table.deepcopy(data.raw["constant-combinator"]["constant-combinator"])
 biome_combinator_entity.name = "biome-color-combinator"
@@ -84,8 +86,9 @@ local biome_combinator_item = table.deepcopy(data.raw["item"]["constant-combinat
 biome_combinator_item.name = "biome-color-combinator"
 biome_combinator_item.place_result = "biome-color-combinator"
 biome_combinator_item.order = biome_combinator_item.order .. "-[biome-color-combinator]"
--- add_overlay_to_item(biome_combinator_item, { sprite = data.raw["utility-sprites"]["default"]["color_effect"] })
-add_overlay_to_item(biome_combinator_item, { sprite = data.raw["utility-sprites"]["default"]["tile_editor_icon"] })
+
+add_overlay_to_icon(biome_combinator_entity, tile_editor_icon)
+add_overlay_to_icon(biome_combinator_item, tile_editor_icon)
 
 local biome_combinator_recipe = table.deepcopy(data.raw["recipe"]["constant-combinator"])
 biome_combinator_recipe.name = "biome-color-combinator"
@@ -112,8 +115,9 @@ local biome_lamp_item = table.deepcopy(data.raw["item"]["small-lamp"])
 biome_lamp_item.name = "biome-color-lamp"
 biome_lamp_item.place_result = "biome-color-lamp"
 biome_lamp_item.order = biome_lamp_item.order .. "-[biome-color-lamp]"
--- add_overlay_to_item(biome_lamp_item, { sprite = data.raw["utility-sprites"]["default"]["color_effect"] })
-add_overlay_to_item(biome_lamp_item, { sprite = data.raw["utility-sprites"]["default"]["tile_editor_icon"] })
+
+add_overlay_to_icon(biome_lamp_entity, tile_editor_icon)
+add_overlay_to_icon(biome_lamp_item, tile_editor_icon)
 
 
 local biome_lamp_recipe = table.deepcopy(data.raw["recipe"]["small-lamp"])
