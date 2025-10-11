@@ -3,6 +3,9 @@ Version: 0.2.1
 Date: ????
   Features:
     - Added a tile overlay to the icons for biome color lamp and combinator
+  Locale:
+    - Updated Russian (ru) locale from Crowdin
+    - Added Chinese (zh-CN) locale from Crowdin
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.0
 Date: 2025-05-17
