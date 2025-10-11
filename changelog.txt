@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.1
-Date: ????
+Date: 2025-10-10
   Features:
     - Added a tile overlay to the icons for biome color lamp and combinator
   Locale:
