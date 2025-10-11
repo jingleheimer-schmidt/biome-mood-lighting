@@ -1,8 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.1
 Date: ????
-  Bugfixes:
-    - Fixed typo in version 0.2.0 changelog
+  Features:
+    - Added a tile overlay to the icons for biome color lamp and combinator
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.0
 Date: 2025-05-17
