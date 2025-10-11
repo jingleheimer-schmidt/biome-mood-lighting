@@ -9,10 +9,10 @@
 --- Mutates and returns the item.
 ---@param item data.ItemPrototype|data.EntityPrototype
 ---@param sprite data.Sprite                # The sprite to use as overlay
----@param corner? Corner                    # Which corner to place overlay (default: "bottom-left")
----@param inset_fraction? number            # Fraction of icon size to inset (default: 1/6)
+---@param corner? Corner                    # Which corner to place overlay (default: "top-right")
+---@param inset_fraction? number            # Fraction of icon size to inset (default: 1/8)
 ---@param inset_px? number                  # Explicit inset in pixels (overrides inset_fraction)
----@param scale_divisor? number             # Divisor for overlay sprite scale (default: 4)
+---@param scale_divisor? number             # Divisor for overlay sprite scale (default: 5)
 ---@return data.ItemPrototype|data.EntityPrototype
 local function add_overlay_to_icon(item, sprite, corner, inset_fraction, inset_px, scale_divisor)
 
