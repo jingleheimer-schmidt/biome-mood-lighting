@@ -2,6 +2,7 @@
 Version: 0.2.2
 Date: ????
   Changes:
+    - Changed icon overlay shift to use [1] and [2] indices (resolves error with long range delivery drones mod)
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.1
 Date: 2025-10-10
