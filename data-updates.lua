@@ -47,10 +47,16 @@ local function add_overlay_to_icon(item, sprite, corner, inset_fraction, inset_p
     if sprite.width and sprite.height then
         overlay_icon_size = math.max(sprite.width, sprite.height)
     elseif sprite.size then
-        ---@type number
-        overlay_icon_size = type(sprite.size) == "number" and sprite.size or math.max(sprite.size[1], sprite.size[2])
-    else
-        overlay_icon_size = base_icon_size
+        if type(sprite.size) == "number" then
+            overlay_icon_size = sprite.size ---@type number
+        elseif type(sprite.size) == "table"
+            and type(sprite.size[1]) == "number"
+            and type(sprite.size[2]) == "number"
+        then
+            overlay_icon_size = math.max(sprite.size[1], sprite.size[2])
+        else
+            overlay_icon_size = base_icon_size
+        end
     end
 
     ---@type data.IconData overlay definition
