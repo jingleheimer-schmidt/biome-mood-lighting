@@ -30,7 +30,7 @@ This mod is generally compatible with all other mods, unless they remove or sign
 
 Help translate Biome Mood Lighting to more languages: https://crowdin.com/project/factorio-mods-localization
 Currently available locale:
-🇺🇸 English (en), 🇷🇺 Russian (ru)
+🇺🇸 English (en), 🇨🇳 Chinese (zh-CN), 🇷🇺 Russian (ru)
 
 ***
 
